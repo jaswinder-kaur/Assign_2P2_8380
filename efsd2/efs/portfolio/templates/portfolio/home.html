@@ -1,0 +1,90 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <title>Eagle Financial Services</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    body {
+        background-image:url('/static/images/pic.jpg') !important;
+    }
+</style>
+       <body>
+            {% if user.is_authenticated %}
+                <div class="page-container">
+
+                    <h2 class="top-menu" style="margin-left: 450px;font-weight: bold">Hello {{ user.username }},</h2>
+                    <p style="margin-left: 450px;font-size: large; ">Please choose from below options.</p>
+
+                </div>
+            {% endif %}
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="links">
+                            <!-- Example row of columns -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "images/customers.jpg" %}" alt="customer"/>
+                                        <div class="caption">
+                                            <h2 style="color: blue">Customer</h2>
+                                            <p style="font-family:  Brush Script MT; font-size:x-large ">We see our success in our customers success, it gives us an immense
+                                                pleasure when our
+                                                advises
+                                                turn out to be fruitful. </p>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:customer_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "images/nonstock1.jpg" %}" alt="non-stock"/>
+                                        <div class="caption">
+                                            <h2 style="color: lawngreen">Non-Stock Investments</h2>
+                                            <p style="font-family:  Brush Script MT; font-size:x-large ">Our team also provides advises for Non-Stock investments.</p>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:investment_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail" style="height: 380px">
+                                        <img src="{% static "images/stocks1.jpg" %}"  alt="stocks"/>
+                                        <div class="caption">
+                                            <h2 style="color: red">Stocks</h2>
+                                            <p style="font-family:  Brush Script MT; font-size:x-large ">Our Stock portfolios vary across industries.</p>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:stock_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "images/stocks.jpg" %}" alt="stocks"/>
+                                        <div class="caption">
+                                            <h2 style="color: lawngreen">Mutual Funds</h2>
+                                            <p style="font-family:  Brush Script MT; font-size:x-large ">Our team also provides advises for Funds.</p>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:mutualfund_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    </html>
+{% endblock %}
