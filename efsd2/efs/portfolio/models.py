@@ -72,17 +72,18 @@ class Stock(models.Model):
         return self.shares * self.purchase_price
 
     def current_stock_price(self):
-            symbol_f = str(self.symbol)
-            main_api = 'http://api.marketstack.com/v1/eod?'
-            api_key = '&interval=1min&apikey=c191d2169d7a3ef874ff88dd770c5504'
-            url = main_api + symbol_f + api_key
-            json_data = requests.get(url).json()
-            open_price = float(json_data["Global Quote"]["02. open"])
-            share_value = open_price
-            return share_value
+        symbol_f = str(self.symbol)
+        main_api = 'http://api.marketstack.com/v1/eod?'
+        api_key = 'access_key=c191d2169d7a3ef874ff88dd770c5504&limit=1&symbols='
+        url = main_api + api_key + symbol_f
+        json_data = requests.get(url).json()
+        open_price = float(json_data["data"][0]["open"])
+        share_value = open_price
+        return share_value 
+
 
     def current_stock_value(self):
-            return float(123.44) * float(self.shares)
+            return float(self.current_stock_price())* float(self.shares)
 
 class MutualFund(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='mutualfund')
